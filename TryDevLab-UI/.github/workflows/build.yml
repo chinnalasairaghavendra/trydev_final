@@ -1,0 +1,53 @@
+name: TryDevLabsUI Pipeline
+
+on:
+  push:
+    branches:
+      - test
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20.12.2
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.12.2
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      # 🔎 SonarQube Scan (REFERENCE ONLY)
+      - name: SonarQube code analysis
+        continue-on-error: true
+        uses: SonarSource/sonarqube-scan-action@v2
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+          args: >
+            -Dsonar.projectKey=trydevlabs-frontend
+            -Dsonar.sources=src
+            -Dsonar.language=js
+
+      # 🔐 Vulnerability scan (reference)
+      - name: Dependency vulnerability scan
+        continue-on-error: true
+        run: npm audit
+
+      - name: Run unit tests
+        run: npm test -- --watch=false
+        env:
+          CI: true
+
+      - name: Build React app
+        run: npm run build
