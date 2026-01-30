@@ -8,8 +8,8 @@ function cn(...classes) {
 
 function LogoMark() {
   return (
-    <div className="w-7 h-7 rounded-md bg-brand-600 flex items-center justify-center">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <div className="w-7 h-7 rounded-md bg-[#0B99FF] flex items-center justify-center">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M9 18l-6-6 6-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M15 6l6 6-6 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
       </svg>
@@ -35,14 +35,14 @@ export default function Navbar() {
   const initial = (user?.username || user?.name || user?.email || 'U').slice(0, 1).toUpperCase();
 
   return (
-    <header className="bg-white border-b border-slate-200">
+    <header className="bg-white border-b border-slate-200 font-inter">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <LogoMark />
-          <span className="font-semibold text-slate-900">CodeFlow</span>
+          <span className="font-bold text-[#0B99FF] text-lg ">CodeFlow</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-7 text-sm text-slate-500">
+        <nav className="hidden md:flex items-center gap-7 text-[#787878] text-sm">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
@@ -67,7 +67,7 @@ export default function Navbar() {
               </button>
               <button
                 onClick={() => navigate('/register')}
-                className="h-9 px-4 rounded-md bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition-colors"
+                className="h-9 px-4 rounded-md bg-[#0B99FF] text-white text-sm font-medium hover:bg-brand-700 transition-colors"
               >
                 Sign Up
               </button>

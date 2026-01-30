@@ -19,7 +19,10 @@ module.exports = {
       },
       boxShadow: {
         card: '0 10px 30px rgba(16, 24, 40, 0.08)'
-      }
+      },
+      fontFamily: {
+        inter: ["Inter", "sans-serif"],
+      },
     }
   },
   plugins: []

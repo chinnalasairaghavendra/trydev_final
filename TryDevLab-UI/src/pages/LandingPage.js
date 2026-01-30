@@ -4,11 +4,14 @@ import { motion } from 'framer-motion';
 import CourseCard from '../components/CourseCard';
 import { getCourses } from '../services/courses';
 import { getVideos } from '../services/videos';
-
+import landing from '../images/landing.png'
+import cssImg from '../images/css.png'
+import reactImg from '../images/react.png'
+import pythonImg from '../images/python.png'
 function Stat({ value, label }) {
   return (
     <div>
-      <div className="text-sm font-semibold text-slate-900">{value}</div>
+      <div className="text-2xl font-bold text-slate-900">{value}</div>
       <div className="text-xs text-slate-500">{label}</div>
     </div>
   );
@@ -16,12 +19,12 @@ function Stat({ value, label }) {
 
 function FeatureCard({ title, desc }) {
   return (
-    <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }} className="bg-white border border-slate-200 rounded-xl shadow-card p-5">
+    <motion.div whileHover={{ y: -2 }} transition={{ duration: 0.15 }} className="bg-white border border-slate-200 rounded-xl shadow-card p-5 ">
       <div className="w-10 h-10 rounded-lg bg-brand-50 flex items-center justify-center">
         <div className="w-4 h-4 rounded bg-brand-600" />
       </div>
-      <div className="mt-4 text-sm font-semibold text-slate-900">{title}</div>
-      <div className="mt-1 text-xs text-slate-500 leading-5">{desc}</div>
+      <div className="mt-4 font-semibold text-slate-900">{title}</div>
+      <div className="mt-1 text-sm text-slate-500 leading-5">{desc}</div>
     </motion.div>
   );
 }
@@ -67,11 +70,11 @@ export default function LandingPage() {
   );
 
   return (
-    <div className="bg-slate-50">
+    <div className="bg-slate-50 font-inter">
       <section className="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
           <div>
-            <div className="text-4xl sm:text-5xl font-semibold text-slate-900 leading-[1.05]">
+            <div className="text-4xl sm:text-5xl text-slate-900 leading-[1.05] font-bold">
               Master coding with
               <br />
               hands-on practice
@@ -79,14 +82,15 @@ export default function LandingPage() {
             <p className="mt-4 text-sm text-slate-500 max-w-xl leading-6">
               Build real-world projects, sharpen your problem solving skills, and learn from expert-curated content.
             </p>
-            <div className="mt-6 flex flex-col sm:flex-row gap-3">
-              <button onClick={() => navigate('/courses')} className="h-10 px-5 rounded-md bg-brand-600 text-white text-sm font-medium hover:bg-brand-700 transition-colors">
+            <div className="mt-6 flex flex-col sm:flex-row gap-3 ">
+              <button onClick={() => navigate('/courses')} className="h-10 px-5 rounded-md bg-[#0B99FF] text-white text-sm font-medium hover:bg-brand-700 transition-colors">
                 Start Learning Now
               </button>
               <button onClick={() => navigate('/courses')} className="h-10 px-5 rounded-md border border-slate-200 bg-white text-sm text-slate-700 hover:bg-slate-50 transition-colors">
                 Explore Courses
               </button>
             </div>
+            <div className='border mt-5'></div>
             <div className="mt-8 flex items-center gap-10">
               <Stat value="150+" label="Interactive Courses" />
               <Stat value="50k+" label="Active Learners" />
@@ -96,16 +100,16 @@ export default function LandingPage() {
 
           <div className="bg-white border border-slate-200 rounded-2xl shadow-card overflow-hidden">
             <div className="h-64 sm:h-80 bg-slate-100 flex items-center justify-center">
-              <div className="text-xs text-slate-500">Hero Image</div>
+              <img src={landing} alt='Hero'></img>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="bg-brand-100/60">
+      <section className="bg-[#C0E0FF] font-inter">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
           <div className="text-center">
-            <div className="text-xs tracking-wider text-slate-500">WHAT MAKES CODEFLOW DIFFERENT</div>
+            <div className="text-sm tracking-wider text-[#0B99FF] font-semibold">WHY CHOOSE TRYDEVLABS</div>
             <div className="mt-2 text-2xl font-semibold text-slate-900">The most effective way to learn</div>
           </div>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-5">
@@ -119,16 +123,16 @@ export default function LandingPage() {
       <section className="max-w-6xl mx-auto px-4 sm:px-6 py-12">
         <div className="flex items-center justify-between">
           <div>
-            <div className="text-xs tracking-wider text-slate-500">POPULAR COURSES</div>
-            <div className="mt-2 text-xl font-semibold text-slate-900">Start with a career path</div>
+            <div className="text-xs tracking-wider text-[#0B99FF]">POPULAR COURSES</div>
+            <div className="mt-2 text-3xl font-semibold text-slate-900">Start with a career path</div>
           </div>
-          <button onClick={() => navigate('/courses')} className="text-xs text-slate-500 hover:text-slate-700">
+          <button onClick={() => navigate('/courses')} className="border border-gray-500 p-2 rounded-lg text-xs font-medium hover:text-slate-700">
             View all courses
           </button>
         </div>
 
         <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-5">
-          {(topCourses.length ? topCourses : [{ title: 'Complete Python Bootcamp', description: 'Learn Python from basics to projects.', level: 'Beginner', lecturesCount: 12 }, { title: 'Modern React & Redux', description: 'Build modern UIs with React.', level: 'Intermediate', lecturesCount: 16 }, { title: 'Advanced CSS Layouts', description: 'Master flexbox and grid.', level: 'Beginner', lecturesCount: 10 }]).map((c, idx) => (
+          {(topCourses.length ? topCourses : [{ title: 'Complete Python Bootcamp', description: 'Learn Python from basics to projects.', level: 'Beginner', lecturesCount: 12,image: pythonImg }, { title: 'Modern React & Redux', description: 'Build modern UIs with React.', level: 'Intermediate', lecturesCount: 16,image: reactImg }, { title: 'Advanced CSS Layouts', description: 'Master flexbox and grid.', level: 'Beginner', lecturesCount: 10,image:cssImg }]).map((c, idx) => (
             <CourseCard
               key={c._id || c.id || idx}
               title={c.title}
@@ -136,6 +140,7 @@ export default function LandingPage() {
               metaLeft={c.level || 'Beginner'}
               metaRight={`${c.lessonsCount || c.lecturesCount || 12} Lessons`}
               onClick={() => navigate('/courses')}
+              image={c.image}
             />
           ))}
         </div>
@@ -167,11 +172,11 @@ export default function LandingPage() {
       </section>
 
       <section className="max-w-6xl mx-auto px-4 sm:px-6 pb-12">
-        <div className="bg-brand-600 rounded-2xl p-10 text-center text-white">
-          <div className="text-2xl font-semibold">Ready to start your coding journey?</div>
-          <div className="mt-2 text-sm text-white/80">Join now and start learning with guided courses, practice, and projects.</div>
+        <div className="bg-[#0B99FF] rounded-2xl p-10 text-center text-white">
+          <div className="text-3xl font-semibold">Ready to start your coding journey?</div>
+          <div className="mt-2 text-md text-white/80">Join now and start learning with guided courses, practice, and projects.</div>
           <div className="mt-6">
-            <button onClick={() => navigate('/register')} className="h-10 px-5 rounded-md bg-white text-slate-900 text-sm font-medium hover:bg-slate-100 transition-colors">
+            <button onClick={() => navigate('/register')} className="h-10 px-5 rounded-md bg-white text-[#0B99FF] text-sm font-medium hover:bg-slate-100 transition-colors">
               Get Started for Free
             </button>
           </div>

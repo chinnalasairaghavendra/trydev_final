@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function LogoMark() {
   return (
-    <div className="w-7 h-7 rounded-md bg-brand-600 flex items-center justify-center">
+    <div className="w-7 h-7 rounded-md bg-[#0B99FF] flex items-center justify-center">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M9 18l-6-6 6-6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M15 6l6 6-6 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
@@ -14,7 +14,7 @@ function LogoMark() {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-50">
+    <footer className="border-t border-slate-200 bg-slate-50 font-inter">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div>
